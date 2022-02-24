@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing icon</title>
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root{
+            --def: #111;
+        }
+
+        body{
+            height: 100vh;
+            background: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        div a{
+            background-color: var(--def);
+            height: 40px;
+            width:40px;
+            display: inline-block;
+            transform: rotate(45deg);
+        }
+
+        div i{
+            
+            transform: rotate(-45deg);
+            color: white;
+            font-size: 40px !important;
+            padding: 0px;
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            color: var(--clr);
+            
+            filter: drop-shadow(0 0 2px var(--clr)) drop-shadow(0 0 10px var(--clr));
+        }
+
+        /* div i::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #111;
+            z-index: -1;
+            transform: rotate(45deg) scale(1.4);
+        } */
+
+        div{
+            margin: 40px;
+            padding: 0px;
+            position: relative;
+            /* border: 2px solid goldenrod; */
+        }
+
+        div::after{
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: -1;
+            box-shadow: 0 0 0 9px var(--def),
+                        0 0 0 10px var(--clr);
+            transition: .5s;
+            transform: scale(.8);
+        }
+
+        div:hover::after{
+            box-shadow: 0 0 0 5px var(--clr),
+                        0 0 0 9px var(--def),
+                        0 0 0 10px var(--clr);
+            transform: scale(1.5);
+        }
+
+
+
+  
+
+    </style>
+
+</head>
+<body>
+
+    <div style="--clr: #1877f2" ><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></div>
+    <div style="--clr: #ff0000" ><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></div>
+    <div style="--clr: #1da1f2" ><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></div>
+    <div style="--clr: #c32aa3" ><a href="#"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></div>
+
+</body>
+</html>
