@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar indicator</title>
+
+    <style>
+
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,  Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #ccc;
+        }
+
+        ul{
+            display: flex;
+            position: relative;
+            /* flex-direction: column; */
+        }
+        
+        ul li{
+            list-style: none;
+            margin: 0 20px;
+            padding: 15px 0;
+        }
+
+        ul li a{
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        nav{
+            /* border: 1px solid red; */
+        }
+
+        #nav-marker{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            height: 10px;
+            width: 0px;
+            background: rgba(255, 0, 0, 0.336);
+            transition: .5s;
+        }
+
+    </style>    
+</head>
+<body>
+    
+    <nav>
+        <ul>
+            <span id="nav-marker"></span>
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Content</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">About us</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Blogs </a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        let marker =  document.getElementById("nav-marker");
+        let navItems = document.querySelectorAll("ul .nav-item ");
+
+        function indicator(element){
+            marker.style.left = element.offsetLeft + "px";
+            marker.style.width = element.offsetWidth + "px";
+        }
+  
+        navItems.forEach(item => {
+            item.addEventListener("mousemove", (e)=>{
+                // indicator(item);
+                // indicator(e.target);
+
+                marker.style.left = item.offsetLeft + "px";
+                marker.style.width = item.offsetWidth + "px";
+            })
+        })
+
+
+
+    </script>
+
+
+</body>
+</html>

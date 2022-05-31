@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse move to cursor move</title>
+</head>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #body{
+            background: rgb(226, 223, 223);
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #cursor{
+            height: 15px;
+            width: 15px;
+            background: none;
+            border: 1px solid black;
+            border-radius: 50%;
+            position: absolute;
+            transition: ease-out .1s;
+            z-index: 999;
+            visibility: hidden;
+
+            /* VVVI */
+            pointer-events: none;
+
+        }
+
+        /* button style */
+        .animBtn{
+            text-decoration: none;
+            border: 1px solid #ffd200;
+            padding: 10px 20px;
+            background-color: #ffd200;
+            color: black;
+            border-radius: 10px;
+            transition: .5s;
+            margin: 10px;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .animBtn::before{
+            content: "";
+            position: absolute;
+            height: 250%;
+            width: 120%;
+            left: 0;
+            top: 0;
+            background-color: transparent;
+            border: 1px solid transparent;
+            /* border-radius: 30% 70% 70% 30% / 30% 30% 70% 70% ; */
+            border-radius: 52% 48% 68% 32% / 68% 3% 97% 32%  ;
+            transform: translateY(50%);
+            transition: 1s ease, transform 1s ease-out;
+            z-index: -1;
+        }
+
+        .animBtn:hover::before{
+            background-color: rgba(0, 0, 0, 0.2);
+            transform: translateY(-40%);
+            /* border-radius: 52% 48% 70% 30% / 89% 62% 38% 11% ; */
+            border-radius: 52% 48% 68% 32% / 68% 62% 38% 32% ;
+            left: -10%;
+        }
+
+
+    </style>
+
+<body>
+    
+    <div id="cursor"></div>
+
+    <section id="body">
+        <!-- button style -->
+        <a href="#" class="animBtn">Hover Me</a>
+        <a href="#" class="animBtn">Hover Me</a>
+        <a href="#" class="animBtn">Hover Me</a>
+    </section>
+
+
+    <script>
+        const cursor = document.querySelector("#cursor");
+        document.onmousedown = () => {
+            cursor.style.transform = "scale(2)";
+        };
+        document.onmouseup = () => {
+            cursor.style.transform = "scale(1)";
+        };
+        document.addEventListener("mousemove",function(e){
+
+            cursor.style.visibility = "visible";
+
+            var x = e.clientX; 
+            var y = e.clientY; 
+
+            cursor.style.left = (x-6) +"px" ;
+            cursor.style.top = (y-6) +"px" ;
+
+            // console.log(x + y)
+            
+        });
+
+
+        // buttons decoration
+        // var aTag = document.getElementsByTagName("a");
+
+        // aTag.forEach(removeCursor);
+
+        // function removeCursor(){
+        //     aTag.style.color = "red";            
+        // }
+
+
+
+
+    </script>
+
+</body>
+</html>
